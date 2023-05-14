@@ -39,8 +39,9 @@ const Dashboard = () => {
         <img className="main-img" src={doc1} alt="dofx" />
       </div>
 
-      <div className="second_part">
-        <div>
+      <div className="second_part grid grid-cols-3 gap-4  justify-center">
+        <div className="im">
+          <h1>ajhdjhjahjh</h1>
           <img className="main-img" src={doc2} alt="dofx" />
         </div>
         <div>
@@ -48,6 +49,12 @@ const Dashboard = () => {
           <h1>hdjahsjd</h1>
           
           <SearchBar />
+        </div>
+        <div>
+          <h1>hdjahsjd</h1>
+          <h1>hdjahsjd</h1>
+          
+          
         </div>
         
       </div>

@@ -27,9 +27,13 @@ const Warpper = styled.main`
     /* position: absolute; */
     display: flex;
     justify-content: space-between;
+    height: 90vh;
     /* margin-top: 1rem; */
 
-    gap: 7rem;
+    gap: 0rem;
+  }
+  .im{
+    height: 100vh;
   }
   .info {
     padding: 60px;
@@ -50,16 +54,18 @@ const Warpper = styled.main`
     .page {
     }
     .main_img {
+      height: 50vh;
       display: block;
     }
   }
   .second_part {
     background: #bfdaf6;
     font-size: large;
+    height: 100vh;
     .h1 {
       font-size: 10px;
     }
-    display: flex;
+    /* display: flex; */
     /* justify-content: space-between; */
     gap: 7rem;
   }
