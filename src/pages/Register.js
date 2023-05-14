@@ -5,19 +5,19 @@ import patImg from "../assests/image/pat_log.jpg";
 import { Formrow } from "../components";
 
 const initialState = {
-  name: '',
-  email: '',
-  password: '',
+  name: "",
+  email: "",
+  password: "",
   isMember: true,
-}
+};
 
 const Register = () => {
   const [userType, setUserType] = useState("doctor");
-  const [values, setValues] = useState(initialState)
+  const [values, setValues] = useState(initialState);
 
   const handleChange = (e) => {
     console.log(e.target);
-  }
+  };
 
   const handleUserTypeChange = (type) => {
     setUserType(type);
@@ -85,72 +85,33 @@ const Register = () => {
       </div>
       <form className="w-96" onSubmit={handleSubmit}>
         <Formrow
-        type='text'
-        name='First name'
-        value={values.name}
+          type="text"
+          name="First name"
+          value={values.name}
+          handleChange={handleChange}
+        ></Formrow>
+
+        <Formrow
+          type="lastname"
+          name="Last name"
+          value={values.name}
+          handleChange={handleChange}
+        ></Formrow>
+
+        <Formrow
+          type="email"
+          name="Email"
+          value={values.email}
+          handleChange={handleChange}
+        ></Formrow>
+
+        <Formrow
+        type='password'
+        name='password'
+        value={values.password}
         handleChange={handleChange}
         ></Formrow>
-        <div className="mb-4">
-          <label
-            className="block text-black-700 font-bold mb-2"
-            htmlFor="Firstname"
-          >
-            First name
-          </label>
-          <input
-            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-            id="firstname"
-            type="firstname"
-            placeholder="firstname"
-            required
-            onChange={handleChange}
-          />
-        </div>
-        <div className="mb-4">
-          <label
-            className="block text-black-700 font-bold mb-2"
-            htmlFor="Lastname"
-          >
-            Last name
-          </label>
-          <input
-            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-            id="lastname"
-            type="lastname"
-            placeholder="lastname"
-            required
-          />
-        </div>
-        <div className="mb-4">
-          <label
-            className="block text-black-700 font-bold mb-2"
-            htmlFor="email"
-          >
-            Email
-          </label>
-          <input
-            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-            id="email"
-            type="email"
-            placeholder="Email"
-            required
-          />
-        </div>
-        <div className="mb-6">
-          <label
-            className="block text-black-700 font-bold mb-2"
-            htmlFor="password"
-          >
-            Password
-          </label>
-          <input
-            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-            id="password"
-            type="password"
-            placeholder="Password"
-            required
-          />
-        </div>
+        
         <div className="flex items-center justify-between">
           <button
             className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
@@ -159,9 +120,7 @@ const Register = () => {
             {userType === "doctor" ? "Signin as Doctor" : "Signin as Patient"}
           </button>
           <Link
-            to={
-              userType === "doctor" ? "/login" : "/login"
-            }
+            to={userType === "doctor" ? "/login" : "/login"}
             className="inline-block align-baseline font-bold text-sm text-blue-500 hover:text-blue-800"
           >
             Login
