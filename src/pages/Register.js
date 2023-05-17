@@ -2,7 +2,8 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import docImg from "../assests/image/do_log.jpg";
 import patImg from "../assests/image/pat_log.jpg";
-import { Formrow } from "../components";
+import { Alert, Formrow } from "../components";
+import { useAppContex } from "../contex/appContext";
 
 const initialState = {
   name: "",
@@ -15,8 +16,24 @@ const Register = () => {
   const [userType, setUserType] = useState("doctor");
   const [values, setValues] = useState(initialState);
 
+  const { isLoading, showAlert, displayAlert,successAlert } = useAppContex();
+
   const handleChange = (e) => {
+    setValues({ ...values, [e.target.name]: e.target.value });
     console.log(e.target);
+  };
+
+  const onSubmit = (e) => {
+    e.preventDefault();
+    const { name, email, password, isMember } = values;
+    if (!email || !password || (!isMember && !name)) {
+      displayAlert();
+      return;
+    }
+    else if(email && password && isMember){
+      successAlert();
+    }
+    console.log(values);
   };
 
   const handleUserTypeChange = (type) => {
@@ -25,6 +42,7 @@ const Register = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
+    // onSubmit
     // TODO: Implement login/signup functionality based on form data
   };
 
@@ -83,7 +101,8 @@ const Register = () => {
           <span className="text-center block">Patient</span>
         </div>
       </div>
-      <form className="w-96" onSubmit={handleSubmit}>
+      <form className="w-96" onSubmit={onSubmit}>
+        {showAlert && <Alert />}
         <Formrow
           type="text"
           name="First name"
@@ -106,12 +125,12 @@ const Register = () => {
         ></Formrow>
 
         <Formrow
-        type='password'
-        name='password'
-        value={values.password}
-        handleChange={handleChange}
+          type="password"
+          name="password"
+          value={values.password}
+          handleChange={handleChange}
         ></Formrow>
-        
+
         <div className="flex items-center justify-between">
           <button
             className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"

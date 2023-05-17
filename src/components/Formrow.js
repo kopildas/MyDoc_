@@ -14,7 +14,7 @@ const Formrow = ({type, name, value, handleChange , levelText}) => {
             id={name}
             type={type}
             placeholder={name}
-            required
+            
             onChange={handleChange}
           />
         </div>
