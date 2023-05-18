@@ -1,10 +1,10 @@
 import React, { useReducer, useContext } from "react";
-import { DISPLAY_ALERT,SUCCESS_ALERT } from "./actions";
+import { DISPLAY_ALERT,SUCCESS_ALERT,CLEAR_ALERT } from "./actions";
 import reducer from "./reducers";
 
 const initialState = {
     isLoading: false,
-    showAlert: true,
+    showAlert: false,
     alertText: '',
     alertType: '',
 }
@@ -17,9 +17,16 @@ const AppProvider = ({children}) => {
 //PageTransitionEvent
     const displayAlert = () =>{
         dispatch({type:DISPLAY_ALERT})
+        clearALERT()
     }
     const successAlert = () =>{
         dispatch({type:SUCCESS_ALERT})
+        clearALERT()
+    }
+    const clearALERT = () =>{
+        setTimeout(()=>{
+            dispatch({type:CLEAR_ALERT})
+        },3000)
     }
 
 

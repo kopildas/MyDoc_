@@ -9,7 +9,7 @@ const initialState = {
   name: "",
   email: "",
   password: "",
-  isMember: true,
+  isMember: false,
 };
 
 const Register = () => {
@@ -33,7 +33,7 @@ const Register = () => {
     else if(email && password && isMember){
       successAlert();
     }
-    console.log(values);
+    console.log('X');
   };
 
   const handleUserTypeChange = (type) => {
